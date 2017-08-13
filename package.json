@@ -1,0 +1,32 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "config": {
+    "src": {
+      "scss": "src/scss",
+      "js": "src/js",
+      "img": "src/img"
+    },
+    "build": {
+      "css": "build/css",
+      "js": "build/js",
+      "img": "build/img"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-csso": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-rename": "latest",
+    "gulp-sass": "latest",
+    "require-dir": "^0.3.2"
+  }
+}
