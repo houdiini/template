@@ -12,12 +12,14 @@
     "src": {
       "scss": "src/scss",
       "js": "src/js",
-      "img": "src/img"
+      "img": "src/img",
+      "html": "src/*.html"
     },
     "build": {
       "css": "build/css",
       "js": "build/js",
-      "img": "build/img"
+      "img": "build/img",
+      "html": "build"
     }
   },
   "author": "",
@@ -30,12 +32,14 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-browserify": "^0.5.1",
+    "gulp-clean": "^0.3.2",
     "gulp-csso": "latest",
-    "gulp-imagemin": "latest",
+    "gulp-imagemin": "^3.3.0",
     "gulp-rename": "latest",
     "gulp-sass": "latest",
     "gulp-uglify": "^3.0.0",
     "require-dir": "^0.3.2",
+    "run-sequence": "^2.1.0",
     "vueify": "^9.4.1"
   },
   "dependencies": {
