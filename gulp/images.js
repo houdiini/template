@@ -1,9 +1,10 @@
 let gulp     = require("gulp"),
     imagemin = require("gulp-imagemin"),
+    runSequence = require("run-sequence"),
     {config} = require("../package.json");
 
 gulp.task('img', () => {
-    return gulp.src(config.src.img + '/*')
+    return gulp.src(config.src.img)
         .pipe( imagemin( {
             interlaced: true,
             progressive: true,
@@ -16,5 +17,5 @@ gulp.task('img', () => {
 })
 
 gulp.task('img:watch', ['img'], () => {
-    return gulp.wacth(config.src.img, ['img']);
+    gulp.watch(config.src.img, function() { runSequence('clean:img', 'img') });
 })

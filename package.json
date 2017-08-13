@@ -10,9 +10,9 @@
     "vue": true,
     "es6": true,
     "src": {
-      "scss": "src/scss",
+      "scss": "src/scss/*.scss",
       "js": "src/js",
-      "img": "src/img",
+      "img": "src/img/*",
       "html": "src/*.html"
     },
     "build": {

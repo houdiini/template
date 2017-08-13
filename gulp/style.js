@@ -2,11 +2,12 @@ let gulp       = require("gulp"),
     csso       = require("gulp-csso"),
     autoprefix = require("gulp-autoprefixer"),
     sass       = require("gulp-sass"),
-    {config}   = require('../package.json')
+    {config}   = require('../package.json'),
+    runSequence = require("run-sequence"),
     rename     = require("gulp-rename");
 
 gulp.task('style', () => {
-    gulp.src(config.src.scss + '/*.scss')
+    gulp.src(config.src.scss)
         .pipe(sass())
         .pipe(autoprefix({
             browsers: ['last 4 versions'],
@@ -19,5 +20,5 @@ gulp.task('style', () => {
 });
 
 gulp.task('style:watch', ['style'], () => {
-    return gulp.watch(config.src.scss, ['style']);
+    return gulp.watch(config.src.scss, function() { runSequence('clean:style', 'style') });
 })

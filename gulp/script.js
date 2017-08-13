@@ -4,6 +4,7 @@ let gulp       = require("gulp"),
     browserify = require("gulp-browserify"),
     vueify     = require("vueify"),
     rename     = require("gulp-rename"),
+    runSequence = require("run-sequence"),
     {config}     = require("../package.json");
 
 gulp.task('script', () => {
@@ -26,5 +27,5 @@ gulp.task('script', () => {
 });
 
 gulp.task('script:watch', ['script'], () => {
-    gulp.watch(config.src.js + '/*.js', ['script']);
+    gulp.watch(config.src.js + '/*.js', function() { runSequence('clean:js', 'script') });
 })

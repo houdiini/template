@@ -4,3 +4,7 @@ let gulp = require("gulp"),
 gulp.task('build:dev', () => {
 	runSequence('clean', ['style', 'script', 'img'])
 });
+
+gulp.task('build:watch', () => {
+	runSequence('clean', ['style:watch', 'script:watch', 'img:watch']);
+})
