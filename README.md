@@ -1,5 +1,4 @@
 # Base template for projects
-===================
 
 ### Installing
 
