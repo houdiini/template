@@ -14,7 +14,7 @@ gulp.task('script', () => {
     if (config.vue)
         transformations.push('vueify')
 
-    return gulp.src(config.src.js + '/*.js')
+    return gulp.src(config.src.js)
             .pipe(browserify({
                 transform: transformations
             }))

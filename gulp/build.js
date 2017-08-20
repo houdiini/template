@@ -6,5 +6,5 @@ gulp.task('build:dev', () => {
 });
 
 gulp.task('build:watch', () => {
-	runSequence('clean', ['style:watch', 'script:watch', 'img:watch']);
+	runSequence('clean', ['style:watch', 'script:watch', 'img:watch', 'html:watch'], 'server');
 })
