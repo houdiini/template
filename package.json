@@ -10,10 +10,10 @@
     "vue": true,
     "es6": true,
     "src": {
-      "scss": "src/scss/*.scss",
+      "scss": ["src/scss/**/*.scss", "src/scss/**/*.css"],
       "js": "src/js/*.js",
       "img": "src/img/*",
-      "html": "src/*.html"
+      "html": "src/**/*.html"
     },
     "build": {
       "css": "build/css",
@@ -44,6 +44,5 @@
     "vueify": "^9.4.1"
   },
   "dependencies": {
-    "underscore": "^1.8.3"
   }
 }
