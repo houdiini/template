@@ -7,10 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "config": {
-    "vue": true,
+    "vue": false,
     "es6": true,
+    "doc": true,
     "src": {
-      "scss": ["src/scss/**/*.scss", "src/scss/**/*.css"],
+      "scss": [
+        "src/scss/**/*.scss",
+        "src/scss/**/*.css"
+      ],
       "js": "src/js/*.js",
       "img": "src/img/*",
       "html": "src/**/*.html"
@@ -36,6 +40,7 @@
     "gulp-clean": "^0.3.2",
     "gulp-csso": "latest",
     "gulp-imagemin": "^3.3.0",
+    "gulp-jsdoc3": "^1.0.1",
     "gulp-rename": "latest",
     "gulp-sass": "latest",
     "gulp-uglify": "^3.0.0",
@@ -43,6 +48,5 @@
     "run-sequence": "^2.1.0",
     "vueify": "^9.4.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

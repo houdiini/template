@@ -5,9 +5,16 @@ let gulp       = require("gulp"),
     vueify     = require("vueify"),
     rename     = require("gulp-rename"),
     runSequence = require("run-sequence"),
+    jsdoc = require('gulp-jsdoc3'),
     {config}     = require("../package.json");
 
-gulp.task('script', () => {
+gulp.task('jsdoc', (cd) => {
+    if (config.doc)
+        return gulp.src(['README.md', config.src.js])
+            .pipe(jsdoc(cd))
+})
+
+gulp.task('script', ['jsdoc'], () => {
     let transformations = [];
     if (config.es6)
         transformations.push("babelify");
@@ -27,5 +34,5 @@ gulp.task('script', () => {
 });
 
 gulp.task('script:watch', ['script'], () => {
-    gulp.watch(config.src.js + '/*.js', function() { runSequence('clean:js', 'script') });
+    gulp.watch(config.src.js, function() { runSequence('clean:js', 'script') });
 })
