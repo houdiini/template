@@ -1,10 +1,11 @@
 let gulp = require("gulp"),
-    runSequence = require("run-sequence");
+  runSequence = require("run-sequence");
+
 
 gulp.task('build:dev', () => {
-    runSequence('clean', ['style', 'script', 'img'])
+  runSequence('clean', ['style', 'script', 'img'])
 });
 
 gulp.task('build:watch', () => {
-    runSequence('clean', ['style:watch', 'script:watch', 'html:watch'], 'server', 'img:watch');
+  runSequence('clean', ['style:watch', 'script:watch', 'html:watch'], 'server', 'img:watch');
 });
