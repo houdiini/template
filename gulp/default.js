@@ -1,6 +1,3 @@
-let gulp = require("gulp");
+let gulp = require('gulp');
 
-gulp.task('default', ['build:dev'], () => {
-
-    // todo: default task must be build
-})
+gulp.task('default', ['dev'], () => {});

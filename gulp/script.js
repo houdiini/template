@@ -1,44 +1,42 @@
-let gulp = require("gulp"),
-  uglify = require("gulp-uglify"),
-  // babelify   = require("babelify"),
-  browserify = require("gulp-browserify"),
-  vueify = require("vueify"),
-  rename = require("gulp-rename"),
-  runSequence = require("run-sequence"),
-  jsdoc = require('gulp-jsdoc3'),
-  { config } = require("../package.json");
-let notify = require("gulp-notify");
-let plumber = require('gulp-plumber');
+let gulp          = require('gulp');
+let webpack       = require('webpack');
+let gutil         = require('gulp-util');
+let notify        = require('gulp-notify');
+// let server        = require('./server');
+let { config }    = require('../package.json');
+let webpackConfig = require('../webpack.config').createConfig;
 
-gulp.task('jsdoc', () => {
-  if (config.doc)
-    return gulp.src(['README.md', config.src.js])
-      .pipe(jsdoc().on('error', (e) => {
-        console.log(e);
-        notify("Oops! JSdoc error")
-      }))
-})
+function handler(err, stats, cb) {
+  var errors = stats.compilation.errors;
 
-gulp.task('script', ['jsdoc'], () => {
-  let transformations = [];
-  if (config.es6)
-    transformations.push("babelify");
-  if (config.vue)
-    transformations.push('vueify')
+  if (err) throw new gutil.PluginError('webpack', err);
 
-  return gulp.src(config.src.js)
-    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-    .pipe(browserify({
-      transform: transformations
-    }))
-    .pipe(gulp.dest(config.build.js))
-    // .pipe(uglify())
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest(config.build.js))
+  if (errors.length > 0) {
+    notify.onError({
+      title: 'Webpack Error',
+      message: '<%= error.message %>',
+      sound: 'Submarine'
+    }).call(null, errors[0]);
+  }
+
+  gutil.log('[script]', stats.toString({
+    colors: true,
+    chunks: false
+  }));
+
+  // server.reload();
+  if (typeof cb === 'function') cb();
+}
+
+gulp.task('script', function(cb) {
+  webpack(webpackConfig()).run(function(err, stats) {
+    handler(err, stats, cb);
+  });
 });
 
-gulp.task('script:watch', ['script'], () => {
-  gulp.watch(config.src.js, function() { runSequence('clean:js', 'script') });
-})
+gulp.task('script:watch', function() {
+  webpack(webpackConfig()).watch({
+    aggregateTimeout: 100,
+    poll: false
+  }, handler);
+});

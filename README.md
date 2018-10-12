@@ -8,7 +8,6 @@
 
 ```
 {
-  "vue": false/true
   "es6": false/true
   "src": {
       "scss": "glob path to scss files",
