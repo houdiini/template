@@ -26,5 +26,5 @@ gulp.task('style', () => {
 });
 
 gulp.task('style:watch', ['style'], () => {
-  return gulp.watch(config.src.scss, function() { runSequence('clean:style', 'style') });
-})
+  return gulp.watch(config.src.scss, function() { runSequence('clean:style', 'style', 'html', 'server:reload'); });
+});

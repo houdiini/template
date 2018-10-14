@@ -2,9 +2,10 @@ let gulp          = require('gulp');
 let webpack       = require('webpack');
 let gutil         = require('gulp-util');
 let notify        = require('gulp-notify');
-// let server        = require('./server');
+let server        = require('./server');
 let { config }    = require('../package.json');
 let webpackConfig = require('../webpack.config').createConfig;
+const browserSync = require('browser-sync');
 
 function handler(err, stats, cb) {
   var errors = stats.compilation.errors;
@@ -24,7 +25,7 @@ function handler(err, stats, cb) {
     chunks: false
   }));
 
-  // server.reload();
+  browserSync.reload();
   if (typeof cb === 'function') cb();
 }
 
@@ -34,7 +35,7 @@ gulp.task('script', function(cb) {
   });
 });
 
-gulp.task('script:watch', function() {
+gulp.task('script:watch', ['clean:js'], function() {
   webpack(webpackConfig()).watch({
     aggregateTimeout: 100,
     poll: false

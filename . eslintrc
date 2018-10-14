@@ -7,6 +7,7 @@
   "rules": {
     "no-undef": 1,
     "no-unused-vars": 1,
+    "no-unreachable": "warn",
     "eqeqeq": [2, "smart"],
     "no-floating-decimal": 2,
     "no-multi-spaces": [2, {
@@ -27,6 +28,11 @@
     "space-before-blocks": 2,
     "space-before-function-paren": [2, "never"],
     "constructor-super": 2,
-    "arrow-spacing": 2
+    "arrow-spacing": 2,
+    "no-empty-function": "warn",
+    "block-spacing": "warn",
+    "brace-style": ["warn", "1tbs", { "allowSingleLine": true }],
+    "comma-dangle": ["warn", "always-multiline"],
+    "comma-spacing": ["warn", { "before": false, "after": true }]
   }
 }

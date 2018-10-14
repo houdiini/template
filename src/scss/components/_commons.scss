@@ -1,0 +1,10 @@
+body {
+  font-size: 1.4rem;
+}
+
+button,
+a {
+  &:focus {
+    outline: none;
+  }
+}

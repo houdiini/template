@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prod": "cross-env NODE_ENV=development"
+    "dev": "gulp dev",
+    "prod": "gulp build"
   },
   "config": {
-    "vue": false,
     "es6": true,
-    "doc": true,
+    "doc": false,
     "src": {
       "scss": [
         "src/scss/**/*.scss",
@@ -22,10 +22,10 @@
     },
     "build": {
       "root": "./",
-      "css": "static/css",
-      "js": "static/js",
-      "img": "static/img",
-      "html": "templates/"
+      "css": "assets/css",
+      "js": "assets/js",
+      "img": "assets/img",
+      "html": "./"
     }
   },
   "author": "",
@@ -70,6 +70,5 @@
     "webpack-stream": "^5.1.1"
   },
   "dependencies": {
-    "gsap": "^2.0.2"
   }
 }

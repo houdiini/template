@@ -7,7 +7,7 @@ gulp.task('clean', () => {
     config.build.css,
     config.build.js,
     config.build.img,
-    config.build.html,
+    // config.build.html,
   ], { read: false })
     .pipe(clean());
 });
@@ -28,6 +28,6 @@ gulp.task('clean:style', () => {
 });
 
 gulp.task('clean:html', () => {
-  return gulp.src(config.build.html, { read: false })
-    .pipe(clean());
+  // return gulp.src(config.build.html, { read: false })
+  //   .pipe(clean());
 });

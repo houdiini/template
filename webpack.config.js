@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const gulp = require('gulp');
 const path = require('path');
 const util = require('gulp-util');
 const { config } = require('./package.json');
@@ -23,7 +24,7 @@ function createConfig(env) {
     },
     output: {
       path: path.join(__dirname, config.build.js),
-      filename: '[name].[chunkhash].js',
+      filename: isProduction ? '[name].[chunkhash].js' : '[name].js',
       publicPath: 'js/',
     },
     devtool: isProduction ?
